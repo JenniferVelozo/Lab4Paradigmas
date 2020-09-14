@@ -10,7 +10,7 @@ import Vistas.Ventana;
 public class Principal {
     public static void main(String[] args){  
         //Se crea una nueva ventana
-        Ventana v1 = new Ventana();
+        VentanaPrincipal v1 = new VentanaPrincipal();
         //Se hace visible la ventana
         v1.setVisible(true);
     }

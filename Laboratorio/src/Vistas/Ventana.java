@@ -25,6 +25,8 @@ import javax.swing.SwingConstants;
  * @author Jennifer
  */
 public class Ventana extends JFrame{
+    
+    Repositorio repo;
    
     public Ventana(){
         iniciarComponentes();
@@ -62,7 +64,6 @@ public class Ventana extends JFrame{
         //Se agrega la etiqueta al panel
         panel.add(bienvenida);
         
-        Repositorio myRepo=new Repositorio();
           
         JLabel label1 = new JLabel("Ingrese nombre del nuevo repositorio");
         label1.setBounds(150,40,400,50);
@@ -108,7 +109,7 @@ public class Ventana extends JFrame{
              
                 String nombreRepo = String.valueOf(JTextField1.getText());
                 String autorRepo = String.valueOf(JTextField2.getText());
-                myRepo.gitInit(nombreRepo,autorRepo);
+                Ventana.this.repo.gitInit(nombreRepo, autorRepo);
                 //x,y , ANCHO DEL BOTON/ALTURA DEL BOTON
                 JLabel opciones = new JLabel();
                 opciones.setText("Escoja una opción");
