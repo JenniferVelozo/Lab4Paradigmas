@@ -1,6 +1,7 @@
 
 package Modelos;
 
+import Vistas.VentanaPrincipal;
 import Vistas.Ventana;
 
 /**

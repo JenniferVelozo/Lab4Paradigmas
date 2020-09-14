@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-import Modelos.Lienzo;
 import Modelos.Repositorio;
 import java.awt.Color;
 import java.awt.Font;
