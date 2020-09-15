@@ -217,11 +217,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="pull"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPullActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonPush">
               <Properties>
                 <Property name="text" type="java.lang.String" value="push"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPushActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel1">
               <Properties>
@@ -270,6 +276,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Status"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonStatusWorkspaceActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

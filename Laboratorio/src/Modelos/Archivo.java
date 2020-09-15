@@ -12,9 +12,9 @@ import java.util.Date;
  */
 public class Archivo {
     //Atributos
-    String nombreArchivo; //nombre del archivo
-    String fechaMod; //fecha de modificación del archivo
-    String contenido; //contenido del archivo
+    public String nombreArchivo; //nombre del archivo
+    public String fechaMod; //fecha de modificación del archivo
+    public String contenido; //contenido del archivo
     
     /** 
      * Crea un archivo a partir de un nombre, y contenido.

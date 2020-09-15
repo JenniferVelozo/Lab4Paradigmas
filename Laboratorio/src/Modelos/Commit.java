@@ -13,10 +13,10 @@ import java.util.Date;
  */
 public class Commit {
     //Atributos
-    String autor; //autor del commit
-    String timeStamp; //marca de tiempo 
-    String mensaje; //mensaje descriptivo
-    ListaArchivos cambios; //cambios hechos
+    public String autor; //autor del commit
+    public String timeStamp; //marca de tiempo 
+    public String mensaje; //mensaje descriptivo
+    public ListaArchivos cambios; //cambios hechos
     
     /** 
      * Crea un commit a partir de un autor,mensaje descriptivo, y los cambios hechos.

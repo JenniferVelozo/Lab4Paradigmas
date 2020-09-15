@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * */
 public class ListaCommits {
     //Atributos
-    ArrayList<Commit> listaCommits; //ArrayList de tipo Commit
-    int cantidadCommits; //Cantidad de commits
+    public ArrayList<Commit> listaCommits; //ArrayList de tipo Commit
+    public int cantidadCommits; //Cantidad de commits
     
     /** 
      * Crea una lista de commits a partir de un ArrayList de tipo Commit.

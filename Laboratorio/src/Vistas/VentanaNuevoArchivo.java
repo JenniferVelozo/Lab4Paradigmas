@@ -5,12 +5,15 @@
  */
 package Vistas;
 
+import Modelos.Repositorio;
+
 /**
  *
  * @author Jennifer
  */
 public class VentanaNuevoArchivo extends javax.swing.JFrame {
-
+    
+    Repositorio myRepo;
     /**
      * Creates new form VentanaNuevoArchivo
      */
@@ -59,6 +62,11 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
         });
 
         botonCrearArchivo.setText("LISTO");
+        botonCrearArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearArchivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,6 +131,15 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
     private void contenidoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contenidoArchivoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contenidoArchivoActionPerformed
+
+    private void botonCrearArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearArchivoActionPerformed
+        String nombreArch= String.valueOf(nombreArchivo.getText());
+        String contenidoArch= String.valueOf(contenidoArchivo.getText());
+        myRepo.crearArchivo(nombreArch, contenidoArch);
+        VentanaPrincipal v1= new VentanaPrincipal();
+        v1.myRepo=this.myRepo;
+        v1.setVisible(true);
+    }//GEN-LAST:event_botonCrearArchivoActionPerformed
 
     /**
      * @param args the command line arguments

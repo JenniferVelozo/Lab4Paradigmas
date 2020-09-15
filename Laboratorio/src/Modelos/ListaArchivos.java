@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * */
 public class ListaArchivos {
     //Atributos
-    ArrayList<Archivo> listaArchivos; //ArrayList de tipo Archivo
-    int cantidadArchivos; //Cantidad de archivos en la lista
+    public ArrayList<Archivo> listaArchivos; //ArrayList de tipo Archivo
+    public int cantidadArchivos; //Cantidad de archivos en la lista
     
     /** 
      * Crea una lista de archivos a partir de un ArrayList de Archivos.

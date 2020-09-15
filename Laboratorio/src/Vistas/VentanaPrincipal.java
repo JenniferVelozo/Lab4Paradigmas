@@ -9,7 +9,8 @@ import Modelos.Repositorio;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
-    Repositorio myRepo= new Repositorio();
+    Repositorio myRepo=new Repositorio();
+    
     public VentanaPrincipal() {
         initComponents();
     }
@@ -89,8 +90,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         botonPull.setText("pull");
+        botonPull.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPullActionPerformed(evt);
+            }
+        });
 
         botonPush.setText("push");
+        botonPush.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPushActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -98,6 +109,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Workspace");
 
         botonStatusWorkspace.setText("Status");
+        botonStatusWorkspace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonStatusWorkspaceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -325,11 +341,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInitActionPerformed
         VentanaInit ventanaInit= new VentanaInit();
         ventanaInit.setVisible(true);
+        ventanaInit.myRepo= myRepo;
+        this.dispose();
     }//GEN-LAST:event_botonInitActionPerformed
 
     private void botonNuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoArchivoActionPerformed
         VentanaNuevoArchivo ventanaNuevoArch= new VentanaNuevoArchivo();
         ventanaNuevoArch.setVisible(true);
+        ventanaNuevoArch.myRepo=this.myRepo;
     }//GEN-LAST:event_botonNuevoArchivoActionPerformed
 
     private void botonCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCommitActionPerformed
@@ -341,6 +360,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         VentanaAdd ventanaAdd= new VentanaAdd();
         ventanaAdd.setVisible(true);
     }//GEN-LAST:event_botonAddActionPerformed
+
+    private void botonPushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPushActionPerformed
+        this.myRepo.gitPush();
+    }//GEN-LAST:event_botonPushActionPerformed
+
+    private void botonPullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPullActionPerformed
+        this.myRepo.gitPull();
+    }//GEN-LAST:event_botonPullActionPerformed
+
+    private void botonStatusWorkspaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusWorkspaceActionPerformed
+        StatusWorkspace v1= new StatusWorkspace();
+        String cant=Integer.toString(this.myRepo.workspace.cantidadArchivos);
+        v1.cantArchivosWS.setText(cant);
+        v1.setVisible(true);
+    }//GEN-LAST:event_botonStatusWorkspaceActionPerformed
 
     /**
      * @param args the command line arguments

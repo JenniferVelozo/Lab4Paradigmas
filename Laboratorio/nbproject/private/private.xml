@@ -5,16 +5,18 @@
         <group>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/Ventana.java</file>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Modelos/Repositorio.java</file>
-            <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/VentanaInit.java</file>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/VentanaPrincipal.java</file>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Modelos/ListaArchivos.java</file>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/VentanaNuevoArchivo.java</file>
+            <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Modelos/ListaCommits.java</file>
+            <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/RepoInicializado.java</file>
+            <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Modelos/Principal.java</file>
+            <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/VentanaInit.java</file>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/VentanaAdd.java</file>
+            <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/StatusWorkspace.java</file>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Modelos/Commit.java</file>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Vistas/VentanaCommit.java</file>
             <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Modelos/Archivo.java</file>
-            <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Modelos/ListaCommits.java</file>
-            <file>file:/C:/Users/jvelo/Desktop/Paradigmas/Lab4Paradigmas/Laboratorio/src/Modelos/Principal.java</file>
         </group>
     </open-files>
 </project-private>

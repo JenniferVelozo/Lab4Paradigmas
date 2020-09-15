@@ -19,13 +19,13 @@ import java.util.Scanner;
  */
 public class Repositorio {
     //Atributos 
-    String nombreRepo; //nombre del repositorio
-    String autorRepo; //autor del repositorio
-    ListaArchivos workspace; //zona de trabajo Workspace
-    ListaArchivos index; //zona de trabajo Index
-    ListaCommits localR; //zona de trabajo Local Repository
-    ListaCommits remoteR; //zona de trabajo Remote Repository
-    
+    public String nombreRepo; //nombre del repositorio
+    public String autorRepo; //autor del repositorio
+    public ListaArchivos workspace; //zona de trabajo Workspace
+    public ListaArchivos index; //zona de trabajo Index
+    public ListaCommits localR; //zona de trabajo Local Repository
+    public ListaCommits remoteR; //zona de trabajo Remote Repository
+   
     /** 
       * Inicializa un nuevo repositorio
       */
@@ -189,34 +189,12 @@ public class Repositorio {
     /**
      * Crea un archivo, solicitando el nombre y contenido al usuario.
      */
-    public void crearArchivo(){
-        /**
-         * Se le solicita al usuario que ingrese el nombre del archivo que desea crear
-         * Si el nombre de archivo ingresado ya existe, se le pedirá al usuario que lo vuelva a ingresar
-         * hasta que ingrese un archivo que no exista
-         * */
-        int esta;
-        String nombreArchivo;
-        do{
-            //Se solicita el nombre de archivo
-            System.out.println("\nIngrese nombre del archivo: ");
-            Scanner entrada = new Scanner(System.in);
-            nombreArchivo=entrada.nextLine();
-            //Se verifica si está o no en el Workspace
-            esta=this.workspace.estaArchivo(nombreArchivo);
-            if(esta!=-1){
-                System.out.println("El archivo ingresado ya existe");
-            }
-        }while(esta!=-1);
-        //Se le solicita sl usuario que ingrese el contenido del archivo
-        System.out.println("\nIngrese contenido del archivo: ");
-        Scanner entrada = new Scanner(System.in);
-        String contenidoArchivo=entrada.nextLine();
+    public void crearArchivo(String nombreArchivo, String contenidoArchivo){
         //Se crea un nuevo objeto de tipo Archivo
         Archivo archivo=new Archivo(nombreArchivo,contenidoArchivo);
-        System.out.println("El archivo fue creado exitosamente ");
+        //System.out.println("El archivo fue creado exitosamente ");
         //Se imprime el nuevo archivo creado
-        System.out.println(archivo.toString());
+        //System.out.println(archivo.toString());
         //Se agrega el nuevo archivo a la zona de trabajo Workspace
         this.workspace.agregarArchivo(archivo);
     }
