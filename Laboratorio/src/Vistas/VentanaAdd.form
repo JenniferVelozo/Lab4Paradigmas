@@ -111,14 +111,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="ingresandoArchivos">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresandoArchivosActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonIngresarArchivos">
           <Properties>
             <Property name="text" type="java.lang.String" value="LISTO"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonIngresarArchivosActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -55,12 +55,6 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
 
         jLabel3.setText("Ingrese contenido del nuevo archivo");
 
-        contenidoArchivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contenidoArchivoActionPerformed(evt);
-            }
-        });
-
         botonCrearArchivo.setText("LISTO");
         botonCrearArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,10 +122,6 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void contenidoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contenidoArchivoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contenidoArchivoActionPerformed
-
     private void botonCrearArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearArchivoActionPerformed
         String nombreArch= String.valueOf(nombreArchivo.getText());
         String contenidoArch= String.valueOf(contenidoArchivo.getText());
@@ -139,6 +129,7 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
         VentanaPrincipal v1= new VentanaPrincipal();
         v1.myRepo=this.myRepo;
         v1.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_botonCrearArchivoActionPerformed
 
     /**

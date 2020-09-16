@@ -10,7 +10,6 @@ import Modelos.Repositorio;
 public class VentanaInit extends javax.swing.JFrame {
 
     Repositorio myRepo;
-    VentanaPrincipal ventanaMain;
     
     public VentanaInit() {
         initComponents();
@@ -36,12 +35,6 @@ public class VentanaInit extends javax.swing.JFrame {
         jLabel1.setText("INICIANDO REPOSITORIO");
 
         jLabel2.setText("Ingrese nombre del nuevo repositorio");
-
-        nombreRepo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreRepoActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Ingrese autor del nuevo repositorio");
 
@@ -112,20 +105,18 @@ public class VentanaInit extends javax.swing.JFrame {
         String nombreRepositorio= String.valueOf(nombreRepo.getText());
         String autorRepositorio= String.valueOf(autorRepo.getText());
         //Se inicializa el repositorio con el nombre y autor ingresados por el usuario
-        myRepo.gitInit(nombreRepositorio, autorRepositorio);
+        this.myRepo.gitInit(nombreRepositorio, autorRepositorio);
         
         //Se crea una ventana indicando que el repositorio fue creado
         RepoInicializado v1= new RepoInicializado();
         v1.myRepo=this.myRepo;
         v1.jLabel10.setText(v1.myRepo.nombreRepo);
         v1.jLabel11.setText(v1.myRepo.autorRepo);
+        
         v1.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_botonIniciarRepoActionPerformed
-
-    private void nombreRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRepoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreRepoActionPerformed
 
     /**
      * @param args the command line arguments

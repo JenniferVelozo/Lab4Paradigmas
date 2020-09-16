@@ -118,14 +118,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="autorCommit">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="autorCommitActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonGenerarCommit">
           <Properties>
             <Property name="text" type="java.lang.String" value="LISTO"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGenerarCommitActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

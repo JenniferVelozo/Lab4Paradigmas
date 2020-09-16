@@ -5,15 +5,15 @@
  */
 package Vistas;
 
+import Modelos.Repositorio;
+
 /**
  *
  * @author Jennifer
  */
 public class VentanaAdd extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaAdd
-     */
+    Repositorio myRepo;
     public VentanaAdd() {
         initComponents();
     }
@@ -45,13 +45,12 @@ public class VentanaAdd extends javax.swing.JFrame {
 
         jLabel2.setText("Ingrese archivos separados por una coma \",\"");
 
-        ingresandoArchivos.addActionListener(new java.awt.event.ActionListener() {
+        botonIngresarArchivos.setText("LISTO");
+        botonIngresarArchivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresandoArchivosActionPerformed(evt);
+                botonIngresarArchivosActionPerformed(evt);
             }
         });
-
-        botonIngresarArchivos.setText("LISTO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,9 +105,15 @@ public class VentanaAdd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ingresandoArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresandoArchivosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingresandoArchivosActionPerformed
+    private void botonIngresarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarArchivosActionPerformed
+        String archivosString= String.valueOf(ingresandoArchivos.getText());
+        String [] archivos= archivosString.split(",");
+        myRepo.gitAdd(archivos);
+        VentanaPrincipal v1= new VentanaPrincipal();
+        v1.myRepo=this.myRepo;
+        v1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonIngresarArchivosActionPerformed
 
     /**
      * @param args the command line arguments

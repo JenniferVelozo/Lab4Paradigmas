@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelos;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Clase para representar un Repositorio en Git.
@@ -28,17 +23,10 @@ public class Repositorio {
    
     /** 
       * Inicializa un nuevo repositorio
+     * @param nombre nombre del repositorio
+     * @param autor autor del repositorio
       */
     public void gitInit(String nombre, String autor){
-        /*System.out.println("\nINICIANDO REPOSITORIO GIT...");
-        //Se le solicita al usuario que ingrese el nombre del nuevo repositorio
-        System.out.println("Ingrese nombre del nuevo repositorio: ");
-        Scanner input = new Scanner(System.in);
-        String nombre=input.nextLine();
-        //Se le solicita al usuario que ingrese el autor del nuevo repositorio
-        System.out.println("Ingrese autor del nuevo repositorio:");
-        String autor=input.nextLine();*/
-        
         //Se inicializa vacía la zona de trabajo Workspace
         ListaArchivos myWS=new ListaArchivos(new ArrayList<>());
 
@@ -62,32 +50,11 @@ public class Repositorio {
     
     /** 
       * Agrega al Index uno o más archivos de texto plano del Workspace.
+      * @param archivosIngresados un arreglo estático de strings, que corresponde los nombres de archivos ingresados por el usuario
       */
-    public void gitAdd(){
-        //Se le pide al usuario que ingrese una cantidad de archivos para añadir al Index
-        Scanner input1 = new Scanner(System.in);
-        System.out.println("Ingrese cantidad de archivos para anadir al Index: ");
-        int cantidadArchivos=input1.nextInt();
-        //Se crea un array list de strings para almacenar los nombres de archivos imngresados por el usuario
-        ArrayList<String> arregloArchivos=new ArrayList<>(cantidadArchivos);
-        Scanner input2 = new Scanner(System.in);
-        //Se le solicita al usuario que ingrese el nombre de los archivos que desea añadir al Index
-        for (int i=0;i<cantidadArchivos;i++){
-            System.out.println("Ingrese nombre de archivo "+ (i+1));
-            String archivo=input2.nextLine();
-            if(arregloArchivos.contains(archivo)){
-                i--;
-                System.out.print("El archivo ya fue ingresado\n");
-            }
-            else
-                arregloArchivos.add(archivo);
-        }
-        System.out.println("Los archivos que desea anadir son: ");
-        for(int i=0;i<cantidadArchivos;i++){
-            System.out.println(arregloArchivos.get(i));
-        }
+    public void gitAdd(String [] archivosIngresados){
         //Se crea una lista con aquellos archivos que pertenecen al Workspace
-        ListaArchivos archivos=this.workspace.archivosQueEstan(arregloArchivos);
+        ListaArchivos archivos=this.workspace.archivosQueEstan(archivosIngresados);
         for(int i=0;i<archivos.cantidadArchivos;i++){
             this.index.agregarArchivo(archivos.listaArchivos.get(i));
         }
@@ -96,27 +63,19 @@ public class Repositorio {
     /** 
       * Crea un nuevo commit en el Local Repository con el contenido del Index, 
       * solicitando un mensaje descriptivo para dicho commit.
+     * @param mensaje mensaje descriptivo del commit
+     * @param autor autor del commit
       */
-    public void gitCommit(){
+    public void gitCommit(String mensaje, String autor){
         //Se obtienen los cambios, que corresponden a los archivos del Index
         ListaArchivos cambios=this.index;
         /**
-         * Si la cantidad de archivos en el index es igual a 0,
-         * se imprime un mensaje indicando que no hay cambios en el index
+         * Si la cantidad de archivos en el index es distinto a 0,
+         * se crea un commit
          * */
-        if (cambios.cantidadArchivos==0){
-            System.out.println("No hay cambios en el Index");
-        }
-        else{
-            //Se le solicita al usuario que ingrese un mensaje descriptivo para el commit
-            System.out.println("\nIngrese mensaje descriptivo");
-            Scanner input = new Scanner(System.in);
-            String mensaje=input.nextLine();
-            //Se solicita que ingrese el autor del commit
-            System.out.println("\nIngrese autor del commit");
-            String autorCommit=input.nextLine();
+        if (cambios.cantidadArchivos!=0){
             //Se crea un objeto de tipo Commit en base a los datos anteriores
-            Commit commit=new Commit(autorCommit,mensaje,cambios);
+            Commit commit=new Commit(autor,mensaje,cambios);
             this.localR.agregarCommit(commit);
         }
         //Luego de hacer un commit, el Index queda vacío
@@ -128,11 +87,8 @@ public class Repositorio {
      * Toma todos los commits del Local Repository y los envía al Remote Repository.
      */
     public void gitPush(){
-        //Si no hay commits en el Local Repository, se imprime un mensaje indicándolo
-        if(this.localR.cantidadCommits==0){
-            System.out.println("No hay commits en el Local Repository");
-        }
-        else{
+        //Si hay commits en el local repository, se copiane  en el remote repository
+        if(this.localR.cantidadCommits!=0){
             ListaCommits enviarARemoteR=this.localR;
             for(int i=0;i<enviarARemoteR.cantidadCommits;i++){
                 if(this.remoteR.estaCommit(enviarARemoteR.listaCommits.get(i))==0){
@@ -171,52 +127,33 @@ public class Repositorio {
     
     /**
      * Muestra el estado actual del repositorio git.
+     * @return un string que representa el estado actual del repositorio Git
      */
-    public void gitStatus(){
-        System.out.println("\nNombre del repositorio: "+ this.nombreRepo);
-        System.out.println("\nAutor del repositorio: "+ this.autorRepo);
-        System.out.println("\nNumero de archivos en el Workspace: "+ this.workspace.cantidadArchivos);
-        System.out.println("\nNumero de archivos en el Index: "+ this.index.cantidadArchivos);
-        System.out.println("\nNumero de commits en Local Repository: "+this.localR.cantidadCommits);
+    public String gitStatus(){
+        String statusString=
+                "\nNombre del repositorio: "+ this.nombreRepo+
+                "\nAutor del repositorio: "+ this.autorRepo+
+                "\nNumero de archivos en el Workspace: "+ this.workspace.cantidadArchivos+
+                "\nNumero de commits en Local Repository: "+this.localR.cantidadCommits;
         if(!this.localR.listaCommits.equals(this.remoteR.listaCommits)){
-            System.out.println("\nEl Remote Repository no está al día");
+            statusString+="\nEl Remote Repository no está al día";
         }
         else{
-            System.out.println("\nEl Remote Repository está al día");
+            statusString+="\nEl Remote Repository está al día";
         }
+        return statusString;
     }
     
     /**
      * Crea un archivo, solicitando el nombre y contenido al usuario.
+     * @param nombreArchivo nombre del archivo ingresado por el usuario
+     * @param contenidoArchivo contenido del archivo ingresado por el usuario
      */
     public void crearArchivo(String nombreArchivo, String contenidoArchivo){
         //Se crea un nuevo objeto de tipo Archivo
         Archivo archivo=new Archivo(nombreArchivo,contenidoArchivo);
-        //System.out.println("El archivo fue creado exitosamente ");
-        //Se imprime el nuevo archivo creado
-        //System.out.println(archivo.toString());
         //Se agrega el nuevo archivo a la zona de trabajo Workspace
         this.workspace.agregarArchivo(archivo);
     }
-    
-    /**
-     * Entrega un repositorio en forma de string.
-     * @return un string que representa un repositorio.
-     */
-    @Override
-    public String toString(){
-        String repoAsString=
-                "\n\n---------------- MOSTRANDO REPOSITORIO ----------------"+
-                "\n\n----------------- Mostrando Workspace -----------------\n"+
-                this.workspace.toString()+
-                "\n\n------------------- Mostrando Index -------------------\n"+
-                this.index.toString()+
-                "\n\n-------------- Mostrando Local Repository -------------\n"+
-                this.localR.toString()+
-                "\n\n------------- Mostrando Remote Repository -------------\n"+
-                this.remoteR.toString();
-        return repoAsString;
-    }
-    
-    
+   
 }

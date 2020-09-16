@@ -8,9 +8,15 @@ import Modelos.Repositorio;
  * @author Jennifer
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    
+    /**
+     * Se crea un nuevo repositorio
+     */
     Repositorio myRepo=new Repositorio();
     
+    /**
+     * Inicializa los componentes de la ventana principal
+     */
     public VentanaPrincipal() {
         initComponents();
     }
@@ -45,6 +51,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         botonStatusRR = new javax.swing.JButton();
+        botonStatus = new javax.swing.JButton();
+        botonExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
@@ -144,6 +152,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel5.setText("Index");
 
         botonStatusIndex.setText("Status");
+        botonStatusIndex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonStatusIndexActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -177,6 +190,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel4.setText("Repository");
 
         botonStatusLR.setText("Status");
+        botonStatusLR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonStatusLRActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -217,6 +235,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel7.setText("Repository");
 
         botonStatusRR.setText("Status");
+        botonStatusRR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonStatusRRActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -246,6 +269,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        botonStatus.setText("status");
+        botonStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonStatusActionPerformed(evt);
+            }
+        });
+
+        botonExit.setText("exit");
+        botonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -264,7 +301,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonCommit, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                            .addComponent(botonPush, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(botonPush, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonStatus)
+                            .addComponent(botonExit)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,12 +330,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonInit)
                     .addComponent(botonAdd)
-                    .addComponent(botonCommit))
+                    .addComponent(botonCommit)
+                    .addComponent(botonStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonNuevoArchivo)
                     .addComponent(botonPull)
-                    .addComponent(botonPush))
+                    .addComponent(botonPush)
+                    .addComponent(botonExit))
                 .addGap(18, 18, 18))
         );
 
@@ -349,16 +392,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         VentanaNuevoArchivo ventanaNuevoArch= new VentanaNuevoArchivo();
         ventanaNuevoArch.setVisible(true);
         ventanaNuevoArch.myRepo=this.myRepo;
+        this.dispose();
     }//GEN-LAST:event_botonNuevoArchivoActionPerformed
 
     private void botonCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCommitActionPerformed
         VentanaCommit ventanaCommit= new VentanaCommit();
         ventanaCommit.setVisible(true);
+        ventanaCommit.myRepo=this.myRepo;
+        this.dispose();
     }//GEN-LAST:event_botonCommitActionPerformed
 
     private void botonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddActionPerformed
         VentanaAdd ventanaAdd= new VentanaAdd();
         ventanaAdd.setVisible(true);
+        ventanaAdd.myRepo=this.myRepo;
+        this.dispose();
     }//GEN-LAST:event_botonAddActionPerformed
 
     private void botonPushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPushActionPerformed
@@ -370,11 +418,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonPullActionPerformed
 
     private void botonStatusWorkspaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusWorkspaceActionPerformed
-        StatusWorkspace v1= new StatusWorkspace();
-        String cant=Integer.toString(this.myRepo.workspace.cantidadArchivos);
-        v1.cantArchivosWS.setText(cant);
+        VentanaStatus v1= new VentanaStatus();
+        v1.areaDeTexto.setText(this.myRepo.workspace.toString());
+        v1.jLabel1.setText("STATUS WORKSPACE");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusWorkspaceActionPerformed
+
+    private void botonStatusIndexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusIndexActionPerformed
+        VentanaStatus v1= new VentanaStatus();
+        v1.areaDeTexto.setText(this.myRepo.index.toString());
+        v1.jLabel1.setText("STATUS INDEX");
+        v1.setVisible(true);
+    }//GEN-LAST:event_botonStatusIndexActionPerformed
+
+    private void botonStatusLRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusLRActionPerformed
+        VentanaStatus v1= new VentanaStatus();
+        v1.areaDeTexto.setText(this.myRepo.localR.toString());
+        v1.jLabel1.setText("STATUS LOCAL REPOSITORY");
+        v1.setVisible(true);
+    }//GEN-LAST:event_botonStatusLRActionPerformed
+
+    private void botonStatusRRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusRRActionPerformed
+        VentanaStatus v1= new VentanaStatus();
+        v1.areaDeTexto.setText(this.myRepo.remoteR.toString());
+        v1.jLabel1.setText("STATUS REMOTE REPOSITORY");
+        v1.setVisible(true);
+    }//GEN-LAST:event_botonStatusRRActionPerformed
+
+    private void botonStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusActionPerformed
+        VentanaStatus v1= new VentanaStatus();
+        v1.areaDeTexto.setText(this.myRepo.gitStatus());
+        v1.jLabel1.setText("GIT STATUS");
+        v1.setVisible(true);
+    }//GEN-LAST:event_botonStatusActionPerformed
+
+    private void botonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonExitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_botonExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,16 +468,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAdd;
-    private javax.swing.JButton botonCommit;
+    public javax.swing.JButton botonAdd;
+    public javax.swing.JButton botonCommit;
+    private javax.swing.JButton botonExit;
     private javax.swing.JButton botonInit;
-    private javax.swing.JButton botonNuevoArchivo;
-    private javax.swing.JButton botonPull;
-    private javax.swing.JButton botonPush;
-    private javax.swing.JButton botonStatusIndex;
-    private javax.swing.JButton botonStatusLR;
-    private javax.swing.JButton botonStatusRR;
-    private javax.swing.JButton botonStatusWorkspace;
+    public javax.swing.JButton botonNuevoArchivo;
+    public javax.swing.JButton botonPull;
+    public javax.swing.JButton botonPush;
+    public javax.swing.JButton botonStatus;
+    public javax.swing.JButton botonStatusIndex;
+    public javax.swing.JButton botonStatusLR;
+    public javax.swing.JButton botonStatusRR;
+    public javax.swing.JButton botonStatusWorkspace;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

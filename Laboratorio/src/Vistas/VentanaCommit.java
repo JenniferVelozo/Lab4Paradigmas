@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vistas;
+
+import Modelos.Repositorio;
 
 /**
  *
@@ -11,6 +9,7 @@ package Vistas;
  */
 public class VentanaCommit extends javax.swing.JFrame {
 
+    Repositorio myRepo;
     /**
      * Creates new form VentanaCommit
      */
@@ -46,13 +45,12 @@ public class VentanaCommit extends javax.swing.JFrame {
 
         jLabel3.setText("Ingrese autor del commit");
 
-        autorCommit.addActionListener(new java.awt.event.ActionListener() {
+        botonGenerarCommit.setText("LISTO");
+        botonGenerarCommit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                autorCommitActionPerformed(evt);
+                botonGenerarCommitActionPerformed(evt);
             }
         });
-
-        botonGenerarCommit.setText("LISTO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,9 +111,15 @@ public class VentanaCommit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void autorCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autorCommitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_autorCommitActionPerformed
+    private void botonGenerarCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarCommitActionPerformed
+        String mensaje= String.valueOf(mensajeCommit.getText());
+        String autor= String.valueOf(autorCommit.getText());
+        myRepo.gitCommit(mensaje,autor);
+        VentanaPrincipal v1= new VentanaPrincipal();
+        v1.myRepo=this.myRepo;
+        v1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonGenerarCommitActionPerformed
 
     /**
      * @param args the command line arguments

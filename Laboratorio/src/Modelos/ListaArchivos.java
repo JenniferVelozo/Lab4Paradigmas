@@ -51,10 +51,10 @@ public class ListaArchivos {
      * @param nombreArchivos un ArrayList con los nombres de archivos.
      * @return una lista con los archivos que sí están dentro.
      */
-    public ListaArchivos archivosQueEstan(ArrayList<String> nombreArchivos){
+    public ListaArchivos archivosQueEstan(String[] nombreArchivos){
         ListaArchivos archivosMiembros=new ListaArchivos(new ArrayList<>());
-        for (int i=0;i<nombreArchivos.size();i++){
-            int posicion=this.estaArchivo(nombreArchivos.get(i));
+        for (int i=0;i<nombreArchivos.length;i++){
+            int posicion=this.estaArchivo(nombreArchivos[i]);
             if(posicion!=-1){
                 archivosMiembros.agregarArchivo(this.listaArchivos.get(posicion));
 

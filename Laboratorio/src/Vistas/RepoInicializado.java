@@ -41,7 +41,7 @@ public class RepoInicializado extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        botonAceptar = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
 
@@ -63,10 +63,10 @@ public class RepoInicializado extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("REPOSITORIO CREADO EXITOSAMENTE");
 
-        jButton1.setText("ACEPTAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonAceptar.setText("ACEPTAR");
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonAceptarActionPerformed(evt);
             }
         });
 
@@ -88,7 +88,7 @@ public class RepoInicializado extends javax.swing.JFrame {
                             .addComponent(jLabel10)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addComponent(jButton1)))
+                        .addComponent(botonAceptar)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -105,7 +105,7 @@ public class RepoInicializado extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(botonAceptar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -133,12 +133,22 @@ public class RepoInicializado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         this.dispose();
-        VentanaPrincipal v2=new VentanaPrincipal();
-        v2.myRepo=this.myRepo;
-        v2.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        VentanaPrincipal VentanaRepoIniciado=new VentanaPrincipal();
+        VentanaRepoIniciado.myRepo=this.myRepo;
+        VentanaRepoIniciado.setVisible(true);
+        VentanaRepoIniciado.botonStatusWorkspace.setEnabled(true);
+        VentanaRepoIniciado.botonStatusIndex.setEnabled(true);
+        VentanaRepoIniciado.botonStatusLR.setEnabled(true);
+        VentanaRepoIniciado.botonStatusRR.setEnabled(true);
+        VentanaRepoIniciado.botonAdd.setEnabled(true);
+        VentanaRepoIniciado.botonCommit.setEnabled(true);
+        VentanaRepoIniciado.botonNuevoArchivo.setEnabled(true);
+        VentanaRepoIniciado.botonPull.setEnabled(true);
+        VentanaRepoIniciado.botonPush.setEnabled(true);
+        this.dispose();
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,9 +186,9 @@ public class RepoInicializado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAceptar;
     private javax.swing.JLabel imprimirAutorRepo;
     private javax.swing.JLabel imprimirNombreRepo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel11;
