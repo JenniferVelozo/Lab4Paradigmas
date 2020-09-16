@@ -8,14 +8,18 @@ package Vistas;
 import Modelos.Repositorio;
 
 /**
- *
+ * La clase VentanaNuevoArchivo permite desplegar una ventana para solicitar el nombre y contenido de un archivo, 
+ * por medio del método crearArchivo de la clase Repositorio.
+ * Cabe destacar que, esta clase tiene a la clase Repositorio, por lo que se tiene una relación de agregación.
  * @author Jennifer
  */
 public class VentanaNuevoArchivo extends javax.swing.JFrame {
     
-    Repositorio myRepo;
+    //Atributo
+    Repositorio myRepo; //un repositorio
+    
     /**
-     * Creates new form VentanaNuevoArchivo
+     * Se inicilizan los componentes de la VentanaNuevoArchivo.
      */
     public VentanaNuevoArchivo() {
         initComponents();
@@ -33,10 +37,10 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        labelNombreArchivo = new javax.swing.JLabel();
         nombreArchivo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelContenidoArchivo = new javax.swing.JLabel();
         contenidoArchivo = new javax.swing.JTextField();
         botonCrearArchivo = new javax.swing.JButton();
 
@@ -48,12 +52,12 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("CREANDO ARCHIVO");
+        titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        titulo.setText("CREANDO ARCHIVO");
 
-        jLabel2.setText("Ingrese nombre del nuevo archivo");
+        labelNombreArchivo.setText("Ingrese nombre del nuevo archivo");
 
-        jLabel3.setText("Ingrese contenido del nuevo archivo");
+        labelContenidoArchivo.setText("Ingrese contenido del nuevo archivo");
 
         botonCrearArchivo.setText("LISTO");
         botonCrearArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -70,15 +74,15 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addComponent(jLabel1))
+                        .addComponent(titulo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
                         .addComponent(nombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)))
+                            .addComponent(labelContenidoArchivo)
+                            .addComponent(labelNombreArchivo)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,13 +96,13 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(labelNombreArchivo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombreArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(labelContenidoArchivo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(contenidoArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -121,11 +125,15 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Crea un archivo, actualizando la ventana principal, con el archivo añadido en el Workspace.
+     * @param evt evento
+     */
     private void botonCrearArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearArchivoActionPerformed
         String nombreArch= String.valueOf(nombreArchivo.getText());
         String contenidoArch= String.valueOf(contenidoArchivo.getText());
-        myRepo.crearArchivo(nombreArch, contenidoArch);
+        this.myRepo.crearArchivo(nombreArch, contenidoArch);
         VentanaPrincipal v1= new VentanaPrincipal();
         v1.myRepo=this.myRepo;
         v1.setVisible(true);
@@ -170,12 +178,12 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCrearArchivo;
     private javax.swing.JTextField contenidoArchivo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel labelContenidoArchivo;
+    private javax.swing.JLabel labelNombreArchivo;
     private javax.swing.JTextField nombreArchivo;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

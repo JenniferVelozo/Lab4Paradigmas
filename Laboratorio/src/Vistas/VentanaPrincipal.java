@@ -4,13 +4,14 @@ package Vistas;
 import Modelos.Repositorio;
 
 /**
- *
+ * La clase VentanaPrincipal  permite visualizar la simulación de git, mostrando botones para simular los comandos básicos de Git,
+ * como init,add,commit,push, pull,status, y crear un archivo. Además, permite ver el contenido de las 4 zonas de trabajo.
  * @author Jennifer
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     /**
-     * Se crea un nuevo repositorio
+     * Se crea un nuevo repositorio (relación de composición)
      */
     Repositorio myRepo=new Repositorio();
     
@@ -29,6 +30,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jDialog1 = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         botonInit = new javax.swing.JButton();
@@ -37,29 +39,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonNuevoArchivo = new javax.swing.JButton();
         botonPull = new javax.swing.JButton();
         botonPush = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        panelWorkspace = new javax.swing.JPanel();
+        labelWorkspace = new javax.swing.JLabel();
         botonStatusWorkspace = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        panelIndex = new javax.swing.JPanel();
+        labelIndex = new javax.swing.JLabel();
         botonStatusIndex = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        panelLocalR = new javax.swing.JPanel();
+        labelLR = new javax.swing.JLabel();
+        labelLR1 = new javax.swing.JLabel();
         botonStatusLR = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        panelRR = new javax.swing.JPanel();
+        labelRR = new javax.swing.JLabel();
+        labelRR1 = new javax.swing.JLabel();
         botonStatusRR = new javax.swing.JButton();
         botonStatus = new javax.swing.JButton();
         botonExit = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        tituloGit = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
         jMenu2.setText("jMenu2");
 
         jMenu3.setText("jMenu3");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,10 +124,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        panelWorkspace.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Workspace");
+        labelWorkspace.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelWorkspace.setText("Workspace");
 
         botonStatusWorkspace.setText("Status");
         botonStatusWorkspace.addActionListener(new java.awt.event.ActionListener() {
@@ -123,33 +136,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelWorkspaceLayout = new javax.swing.GroupLayout(panelWorkspace);
+        panelWorkspace.setLayout(panelWorkspaceLayout);
+        panelWorkspaceLayout.setHorizontalGroup(
+            panelWorkspaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelWorkspaceLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(labelWorkspace)
                 .addGap(19, 19, 19))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(panelWorkspaceLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botonStatusWorkspace)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelWorkspaceLayout.setVerticalGroup(
+            panelWorkspaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelWorkspaceLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(labelWorkspace)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonStatusWorkspace)
                 .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        panelIndex.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Index");
+        labelIndex.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelIndex.setText("Index");
 
         botonStatusIndex.setText("Status");
         botonStatusIndex.addActionListener(new java.awt.event.ActionListener() {
@@ -158,36 +171,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelIndexLayout = new javax.swing.GroupLayout(panelIndex);
+        panelIndex.setLayout(panelIndexLayout);
+        panelIndexLayout.setHorizontalGroup(
+            panelIndexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIndexLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botonStatusIndex)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelIndexLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(labelIndex)
                 .addGap(24, 24, 24))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        panelIndexLayout.setVerticalGroup(
+            panelIndexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIndexLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(labelIndex)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonStatusIndex)
                 .addContainerGap())
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        panelLocalR.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Local");
+        labelLR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelLR.setText("Local");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Repository");
+        labelLR1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelLR1.setText("Repository");
 
         botonStatusLR.setText("Status");
         botonStatusLR.addActionListener(new java.awt.event.ActionListener() {
@@ -196,43 +209,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelLocalRLayout = new javax.swing.GroupLayout(panelLocalR);
+        panelLocalR.setLayout(panelLocalRLayout);
+        panelLocalRLayout.setHorizontalGroup(
+            panelLocalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLocalRLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addComponent(labelLR1)
                 .addGap(20, 20, 20))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(panelLocalRLayout.createSequentialGroup()
+                .addGroup(panelLocalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLocalRLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(botonStatusLR))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(panelLocalRLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jLabel3)))
+                        .addComponent(labelLR)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        panelLocalRLayout.setVerticalGroup(
+            panelLocalRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLocalRLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(labelLR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(labelLR1)
                 .addGap(18, 18, 18)
                 .addComponent(botonStatusLR)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        panelRR.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setText("Remote");
+        labelRR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelRR.setText("Remote");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel7.setText("Repository");
+        labelRR1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labelRR1.setText("Repository");
 
         botonStatusRR.setText("Status");
         botonStatusRR.addActionListener(new java.awt.event.ActionListener() {
@@ -241,29 +254,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelRRLayout = new javax.swing.GroupLayout(panelRR);
+        panelRR.setLayout(panelRRLayout);
+        panelRRLayout.setHorizontalGroup(
+            panelRRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRRLayout.createSequentialGroup()
+                .addGroup(panelRRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRRLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(panelRRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelRR1)
+                            .addComponent(labelRR)))
+                    .addGroup(panelRRLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(botonStatusRR)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        panelRRLayout.setVerticalGroup(
+            panelRRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRRLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(labelRR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(labelRR1)
                 .addGap(18, 18, 18)
                 .addComponent(botonStatusRR)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -308,13 +321,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(botonExit)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelIndex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelLocalR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelRR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -322,10 +335,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelLocalR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelIndex, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelWorkspace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonInit)
@@ -341,8 +354,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("GIT");
+        tituloGit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tituloGit.setText("GIT");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -354,14 +367,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(232, 232, 232)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tituloGit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(tituloGit)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
@@ -380,78 +393,128 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Al hacer click en el botón "Init", se crea una VentanaInit para solicitar 
+     * el nombre y autor del nuevo repositorio al usuario.
+     * @param evt evento
+     */
     private void botonInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInitActionPerformed
         VentanaInit ventanaInit= new VentanaInit();
         ventanaInit.setVisible(true);
         ventanaInit.myRepo= myRepo;
         this.dispose();
     }//GEN-LAST:event_botonInitActionPerformed
-
+    /**
+     * Al hacer click en el botón "Nuevo archivo", se crea una VentanaNuevoArch 
+     * para solicitar el nombre y contenido del archivo al usuario.
+     * @param evt evento
+     */
     private void botonNuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoArchivoActionPerformed
         VentanaNuevoArchivo ventanaNuevoArch= new VentanaNuevoArchivo();
         ventanaNuevoArch.setVisible(true);
         ventanaNuevoArch.myRepo=this.myRepo;
         this.dispose();
     }//GEN-LAST:event_botonNuevoArchivoActionPerformed
-
+    
+    /**
+     * Al hacer click en el botón "commit", se crea una VentanaCommit 
+     * para solicitar el mensaje y autor del commit al usuario.
+     * @param evt evento
+     */
     private void botonCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCommitActionPerformed
         VentanaCommit ventanaCommit= new VentanaCommit();
         ventanaCommit.setVisible(true);
         ventanaCommit.myRepo=this.myRepo;
         this.dispose();
     }//GEN-LAST:event_botonCommitActionPerformed
-
+    
+    /**
+     * Al hacer click en el botón "add", se crea una VentanaAdd
+     * @param evt evento
+     */
     private void botonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddActionPerformed
         VentanaAdd ventanaAdd= new VentanaAdd();
         ventanaAdd.setVisible(true);
         ventanaAdd.myRepo=this.myRepo;
         this.dispose();
     }//GEN-LAST:event_botonAddActionPerformed
-
+    
+    /**
+     * Al hacer click en el botón "push", se hace el llamado al método gitPush de la clase Repositorio
+     * @param evt evento
+     */
     private void botonPushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPushActionPerformed
         this.myRepo.gitPush();
     }//GEN-LAST:event_botonPushActionPerformed
-
+    
+    /**
+     * Al hacer click en el botón "pull", se hace el llamado al método gitPull de la clase Repositorio
+     * @param evt evento
+     */
     private void botonPullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPullActionPerformed
         this.myRepo.gitPull();
     }//GEN-LAST:event_botonPullActionPerformed
-
+    
+    /**
+     * Permite mostrar una ventana para indicar los archivos que posee el Workspace.
+     * @param evt evento
+     */
     private void botonStatusWorkspaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusWorkspaceActionPerformed
         VentanaStatus v1= new VentanaStatus();
         v1.areaDeTexto.setText(this.myRepo.workspace.toString());
-        v1.jLabel1.setText("STATUS WORKSPACE");
+        v1.titulo.setText("STATUS WORKSPACE");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusWorkspaceActionPerformed
-
+    
+    /**
+     * Permite mostrar una ventana para indicar los archivos que posee el Index.
+     * @param evt evento
+     */
     private void botonStatusIndexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusIndexActionPerformed
         VentanaStatus v1= new VentanaStatus();
         v1.areaDeTexto.setText(this.myRepo.index.toString());
-        v1.jLabel1.setText("STATUS INDEX");
+        v1.titulo.setText("STATUS INDEX");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusIndexActionPerformed
-
+    
+    /**
+     * Permite mostrar una ventana para indicar los commit que posee el Local Repository.
+     * @param evt evento
+     */
     private void botonStatusLRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusLRActionPerformed
         VentanaStatus v1= new VentanaStatus();
         v1.areaDeTexto.setText(this.myRepo.localR.toString());
-        v1.jLabel1.setText("STATUS LOCAL REPOSITORY");
+        v1.titulo.setText("STATUS LOCAL REPOSITORY");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusLRActionPerformed
 
+       /**
+     * Permite mostrar una ventana para indicar los commits que posee el Remote Repository.
+     * @param evt evento
+     */
     private void botonStatusRRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusRRActionPerformed
         VentanaStatus v1= new VentanaStatus();
         v1.areaDeTexto.setText(this.myRepo.remoteR.toString());
-        v1.jLabel1.setText("STATUS REMOTE REPOSITORY");
+        v1.titulo.setText("STATUS REMOTE REPOSITORY");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusRRActionPerformed
 
+    /**
+    * Permite mostrar una ventana para indicar el estado actual del repositorio Git.
+    * @param evt evento
+    */
     private void botonStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusActionPerformed
         VentanaStatus v1= new VentanaStatus();
         v1.areaDeTexto.setText(this.myRepo.gitStatus());
-        v1.jLabel1.setText("GIT STATUS");
+        v1.titulo.setText("GIT STATUS");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusActionPerformed
 
+    /**
+     * Permite finalizar la simulación de Git, cerrando la ventana principal.
+     * @param evt evento
+     */
     private void botonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonExitActionPerformed
         this.dispose();
     }//GEN-LAST:event_botonExitActionPerformed
@@ -480,22 +543,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JButton botonStatusLR;
     public javax.swing.JButton botonStatusRR;
     public javax.swing.JButton botonStatusWorkspace;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JOptionPane jOptionPane1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel labelIndex;
+    private javax.swing.JLabel labelLR;
+    private javax.swing.JLabel labelLR1;
+    private javax.swing.JLabel labelRR;
+    private javax.swing.JLabel labelRR1;
+    private javax.swing.JLabel labelWorkspace;
+    private javax.swing.JPanel panelIndex;
+    private javax.swing.JPanel panelLocalR;
+    private javax.swing.JPanel panelRR;
+    private javax.swing.JPanel panelWorkspace;
+    private javax.swing.JLabel tituloGit;
     // End of variables declaration//GEN-END:variables
 }

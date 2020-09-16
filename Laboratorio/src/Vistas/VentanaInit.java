@@ -4,13 +4,19 @@ package Vistas;
 import Modelos.Repositorio;
 
 /**
- *
+ * La clase VentanaInit permite desplegar una ventana para solicitar el nombre y autor del repositorio al usuario,
+ * por medio del método gitInit de la clase Repositorio.
+ * Cabe destacar que, esta clase tiene a la clase Repositorio, por lo que se tiene una relación de agregación.
  * @author Jennifer
  */
 public class VentanaInit extends javax.swing.JFrame {
-
-    Repositorio myRepo;
     
+    //Atributos
+    Repositorio myRepo; //un repositorio
+    
+    /**
+     * Se inicilizan los componentes de la VentanaInit
+     */
     public VentanaInit() {
         initComponents();
     }
@@ -20,10 +26,10 @@ public class VentanaInit extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        labelNombreRepo = new javax.swing.JLabel();
         nombreRepo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelAutorRepo = new javax.swing.JLabel();
         autorRepo = new javax.swing.JTextField();
         botonIniciarRepo = new javax.swing.JButton();
 
@@ -31,12 +37,12 @@ public class VentanaInit extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("INICIANDO REPOSITORIO");
+        titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        titulo.setText("INICIANDO REPOSITORIO");
 
-        jLabel2.setText("Ingrese nombre del nuevo repositorio");
+        labelNombreRepo.setText("Ingrese nombre del nuevo repositorio");
 
-        jLabel3.setText("Ingrese autor del nuevo repositorio");
+        labelAutorRepo.setText("Ingrese autor del nuevo repositorio");
 
         botonIniciarRepo.setText("Iniciar Repositorio");
         botonIniciarRepo.addActionListener(new java.awt.event.ActionListener() {
@@ -64,22 +70,22 @@ public class VentanaInit extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 88, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
+                    .addComponent(titulo)
+                    .addComponent(labelAutorRepo)
+                    .addComponent(labelNombreRepo))
                 .addGap(70, 70, 70))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(labelNombreRepo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombreRepo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(labelAutorRepo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(autorRepo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -100,20 +106,31 @@ public class VentanaInit extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Permite inicializar el repositorio con un nombre y autor, y sus zonas de trabajo vacías.
+     * Esto, por medio del método gitInit de la clase Repositorio.
+     * Además se habilitan los demás botones de la ventana principal.
+     * @param evt evento
+     */
     private void botonIniciarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarRepoActionPerformed
         String nombreRepositorio= String.valueOf(nombreRepo.getText());
         String autorRepositorio= String.valueOf(autorRepo.getText());
         //Se inicializa el repositorio con el nombre y autor ingresados por el usuario
         this.myRepo.gitInit(nombreRepositorio, autorRepositorio);
-        
-        //Se crea una ventana indicando que el repositorio fue creado
-        RepoInicializado v1= new RepoInicializado();
-        v1.myRepo=this.myRepo;
-        v1.jLabel10.setText(v1.myRepo.nombreRepo);
-        v1.jLabel11.setText(v1.myRepo.autorRepo);
-        
-        v1.setVisible(true);
+                
+        this.dispose();
+        VentanaPrincipal VentanaRepoIniciado=new VentanaPrincipal();
+        VentanaRepoIniciado.myRepo=this.myRepo;
+        VentanaRepoIniciado.setVisible(true);
+        VentanaRepoIniciado.botonStatusWorkspace.setEnabled(true);
+        VentanaRepoIniciado.botonStatusIndex.setEnabled(true);
+        VentanaRepoIniciado.botonStatusLR.setEnabled(true);
+        VentanaRepoIniciado.botonStatusRR.setEnabled(true);
+        VentanaRepoIniciado.botonAdd.setEnabled(true);
+        VentanaRepoIniciado.botonCommit.setEnabled(true);
+        VentanaRepoIniciado.botonNuevoArchivo.setEnabled(true);
+        VentanaRepoIniciado.botonPull.setEnabled(true);
+        VentanaRepoIniciado.botonPush.setEnabled(true);
         this.dispose();
         
     }//GEN-LAST:event_botonIniciarRepoActionPerformed
@@ -156,10 +173,10 @@ public class VentanaInit extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField autorRepo;
     private javax.swing.JButton botonIniciarRepo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelAutorRepo;
+    private javax.swing.JLabel labelNombreRepo;
     private javax.swing.JTextField nombreRepo;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,8 +23,8 @@ public class Repositorio {
    
     /** 
       * Inicializa un nuevo repositorio
-     * @param nombre nombre del repositorio
-     * @param autor autor del repositorio
+      * @param nombre nombre del repositorio
+      * @param autor autor del repositorio
       */
     public void gitInit(String nombre, String autor){
         //Se inicializa vacía la zona de trabajo Workspace
@@ -63,8 +63,8 @@ public class Repositorio {
     /** 
       * Crea un nuevo commit en el Local Repository con el contenido del Index, 
       * solicitando un mensaje descriptivo para dicho commit.
-     * @param mensaje mensaje descriptivo del commit
-     * @param autor autor del commit
+      * @param mensaje mensaje descriptivo del commit
+      * @param autor autor del commit
       */
     public void gitCommit(String mensaje, String autor){
         //Se obtienen los cambios, que corresponden a los archivos del Index
@@ -126,7 +126,7 @@ public class Repositorio {
     }
     
     /**
-     * Muestra el estado actual del repositorio git.
+     * Permite representar un repositorio a través de un string.
      * @return un string que representa el estado actual del repositorio Git
      */
     public String gitStatus(){
@@ -153,7 +153,10 @@ public class Repositorio {
         //Se crea un nuevo objeto de tipo Archivo
         Archivo archivo=new Archivo(nombreArchivo,contenidoArchivo);
         //Se agrega el nuevo archivo a la zona de trabajo Workspace
-        this.workspace.agregarArchivo(archivo);
+        if(workspace.estaArchivo(archivo.nombreArchivo)==-1){
+            this.workspace.agregarArchivo(archivo);
+        }
+        
     }
    
 }

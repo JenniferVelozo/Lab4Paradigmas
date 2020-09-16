@@ -4,14 +4,17 @@ package Vistas;
 import Modelos.Repositorio;
 
 /**
- *
+ * La clase VentanaCommit permite desplegar una ventana para solicitar el mensaje y autor de un commit, para crear un commit  
+ * por medio del método gitCommit de la clase Repositorio.
+ * Cabe destacar que, esta clase tiene a la clase Repositorio, por lo que se tiene una relación de agregación.
  * @author Jennifer
  */
 public class VentanaCommit extends javax.swing.JFrame {
-
-    Repositorio myRepo;
+    
+    //Atributo
+    Repositorio myRepo; //un repositorio
     /**
-     * Creates new form VentanaCommit
+     * Se inicilizan los componentes de la VentanaCommit.
      */
     public VentanaCommit() {
         initComponents();
@@ -27,10 +30,10 @@ public class VentanaCommit extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        labelMensaje = new javax.swing.JLabel();
         mensajeCommit = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelAutor = new javax.swing.JLabel();
         autorCommit = new javax.swing.JTextField();
         botonGenerarCommit = new javax.swing.JButton();
 
@@ -38,12 +41,12 @@ public class VentanaCommit extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("GIT COMMIT");
+        titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        titulo.setText("GIT COMMIT");
 
-        jLabel2.setText("Ingrese mensaje descriptivo del commit");
+        labelMensaje.setText("Ingrese mensaje descriptivo del commit");
 
-        jLabel3.setText("Ingrese autor del commit");
+        labelAutor.setText("Ingrese autor del commit");
 
         botonGenerarCommit.setText("LISTO");
         botonGenerarCommit.addActionListener(new java.awt.event.ActionListener() {
@@ -60,10 +63,10 @@ public class VentanaCommit extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
-                        .addComponent(jLabel1))
+                        .addComponent(titulo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(jLabel2))
+                        .addComponent(labelMensaje))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(mensajeCommit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -76,20 +79,20 @@ public class VentanaCommit extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(autorCommit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))))
+                            .addComponent(labelAutor))))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(labelMensaje)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mensajeCommit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(labelAutor)
                 .addGap(1, 1, 1)
                 .addComponent(autorCommit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -110,11 +113,16 @@ public class VentanaCommit extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     *  Permite crear un commit, actualizando el repositorio de la ventana principal, con el commit creado 
+     *  en el local repository.
+     * @param evt evento
+     */
     private void botonGenerarCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarCommitActionPerformed
         String mensaje= String.valueOf(mensajeCommit.getText());
         String autor= String.valueOf(autorCommit.getText());
-        myRepo.gitCommit(mensaje,autor);
+        this.myRepo.gitCommit(mensaje,autor);
         VentanaPrincipal v1= new VentanaPrincipal();
         v1.myRepo=this.myRepo;
         v1.setVisible(true);
@@ -159,10 +167,10 @@ public class VentanaCommit extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField autorCommit;
     private javax.swing.JButton botonGenerarCommit;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelAutor;
+    private javax.swing.JLabel labelMensaje;
     private javax.swing.JTextField mensajeCommit;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

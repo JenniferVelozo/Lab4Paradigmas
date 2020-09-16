@@ -8,12 +8,19 @@ package Vistas;
 import Modelos.Repositorio;
 
 /**
- *
+ * La clase VentanaAdd permite desplegar una ventana para solicitar los archivos, 
+ * y así ingresarlos al Index, por medio del método gitAdd de la clase Repositorio.
+ * Cabe destacar que, esta clase tiene a la clase Repositorio, por lo que se tiene una relación de agregación.
  * @author Jennifer
  */
 public class VentanaAdd extends javax.swing.JFrame {
-
-    Repositorio myRepo;
+    
+    //Atributo
+    Repositorio myRepo; //un repositorio
+    
+    /**
+     * Se inicilizan los componentes de la VentanaAdd.
+     */
     public VentanaAdd() {
         initComponents();
     }
@@ -29,8 +36,8 @@ public class VentanaAdd extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        labelIngresarArchivos = new javax.swing.JLabel();
         ingresandoArchivos = new javax.swing.JTextField();
         botonIngresarArchivos = new javax.swing.JButton();
 
@@ -40,10 +47,10 @@ public class VentanaAdd extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("GIT ADD");
+        titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        titulo.setText("GIT ADD");
 
-        jLabel2.setText("Ingrese archivos separados por una coma \",\"");
+        labelIngresarArchivos.setText("Ingrese archivos separados por una coma \",\"");
 
         botonIngresarArchivos.setText("LISTO");
         botonIngresarArchivos.addActionListener(new java.awt.event.ActionListener() {
@@ -60,13 +67,13 @@ public class VentanaAdd extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel2))
+                        .addComponent(labelIngresarArchivos))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(132, 132, 132)
                         .addComponent(botonIngresarArchivos))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(130, 130, 130)
-                        .addComponent(jLabel1)))
+                        .addComponent(titulo)))
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -77,9 +84,9 @@ public class VentanaAdd extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jLabel1)
+                .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(labelIngresarArchivos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ingresandoArchivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -104,11 +111,15 @@ public class VentanaAdd extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Crea un arreglo de strings con los nombres de archivos ingresados por el usuario,
+     * y por medio del método gitAdd, se agregan al Index aquellos que pertenezcan al Workspace.
+     * @param evt 
+     */
     private void botonIngresarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarArchivosActionPerformed
         String archivosString= String.valueOf(ingresandoArchivos.getText());
         String [] archivos= archivosString.split(",");
-        myRepo.gitAdd(archivos);
+        this.myRepo.gitAdd(archivos);
         VentanaPrincipal v1= new VentanaPrincipal();
         v1.myRepo=this.myRepo;
         v1.setVisible(true);
@@ -153,9 +164,9 @@ public class VentanaAdd extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonIngresarArchivos;
     private javax.swing.JTextField ingresandoArchivos;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelIngresarArchivos;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,11 +1,15 @@
 
 package Vistas;
 /**
- *
+ * La clase VentanaStatus permite visualizar la información del repositorio Git, o bien, el contenido de una de las zonas
+ * de trabajo.
  * @author Jennifer
  */
 public class VentanaStatus extends javax.swing.JFrame {
-
+    
+    /**
+     * Se inicilizan los componentes de la VentanaStatus.
+     */
     public VentanaStatus() {
         initComponents();
     }
@@ -22,8 +26,8 @@ public class VentanaStatus extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         scrollPane1 = new java.awt.ScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        titulo = new javax.swing.JLabel();
+        botonOk = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaDeTexto = new javax.swing.JTextArea();
 
@@ -31,13 +35,13 @@ public class VentanaStatus extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("STATUS");
+        titulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        titulo.setText("STATUS");
 
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonOk.setText("OK");
+        botonOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonOkActionPerformed(evt);
             }
         });
 
@@ -59,10 +63,10 @@ public class VentanaStatus extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(113, 113, 113)
-                                .addComponent(jButton1))
+                                .addComponent(botonOk))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(78, 78, 78)
-                                .addComponent(jLabel1)))
+                                .addComponent(titulo)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 10, Short.MAX_VALUE)
@@ -73,11 +77,11 @@ public class VentanaStatus extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(botonOk)
                 .addContainerGap())
         );
 
@@ -99,9 +103,13 @@ public class VentanaStatus extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /**
+     * Cierra la ventana, una vez se haya visto el contenido.
+     * @param evt evento
+     */
+    private void botonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOkActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonOkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,11 +155,11 @@ public class VentanaStatus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextArea areaDeTexto;
-    private javax.swing.JButton jButton1;
-    public javax.swing.JLabel jLabel1;
+    private javax.swing.JButton botonOk;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private java.awt.ScrollPane scrollPane1;
+    public javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
