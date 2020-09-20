@@ -54,9 +54,20 @@ public class ListaCommits {
     @Override
     public String toString(){
         String listaToString="Cantidad de commits: "+ this.cantidadCommits;
-        for (int i=0;i<this.cantidadCommits;i++){
-            listaToString=listaToString+"\n\nMOSTRANDO COMMIT "+ (i+1)+"\n"+ this.listaCommits.get(i).toString();
+        if (this.cantidadCommits==0){
+            return listaToString;
         }
+        if (this.cantidadCommits>3){
+            for (int i=(this.cantidadCommits-1);i>=(this.cantidadCommits-3);i--){
+                listaToString=listaToString+"\n\nMOSTRANDO COMMIT "+ (i+1)+"\n"+ this.listaCommits.get(i).toString();
+            }
+        }
+        else{
+            for (int i=(this.cantidadCommits-1);i>=0;i--){
+                listaToString=listaToString+"\n\nMOSTRANDO COMMIT "+ (i+1)+"\n"+ this.listaCommits.get(i).toString();
+            }
+        }
+        
         return listaToString;
     }
 }

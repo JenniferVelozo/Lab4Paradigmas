@@ -15,6 +15,22 @@ public class VentanaInit extends javax.swing.JFrame {
     Repositorio myRepo; //un repositorio
     
     /**
+     * Permite obtener el atributo Repositorio de la clase VentanaPrincipal.
+     * @return repositorio
+     */
+    public Repositorio getRepositorio(){
+        return this.myRepo;
+    }
+    
+    /**
+     * Permite modificar el atributo Repositorio de la clase VentanaPrincipal.
+     * @param repo repositorio
+     */
+    public void setRepositorio(Repositorio repo){
+        this.myRepo=repo;
+    }
+    
+    /**
      * Se inicilizan los componentes de la VentanaInit
      */
     public VentanaInit() {
@@ -116,11 +132,11 @@ public class VentanaInit extends javax.swing.JFrame {
         String nombreRepositorio= String.valueOf(nombreRepo.getText());
         String autorRepositorio= String.valueOf(autorRepo.getText());
         //Se inicializa el repositorio con el nombre y autor ingresados por el usuario
-        this.myRepo.gitInit(nombreRepositorio, autorRepositorio);
+        this.getRepositorio().gitInit(nombreRepositorio, autorRepositorio);
                 
         this.dispose();
         VentanaPrincipal VentanaRepoIniciado=new VentanaPrincipal();
-        VentanaRepoIniciado.myRepo=this.myRepo;
+        VentanaRepoIniciado.setRepositorio(this.getRepositorio());
         VentanaRepoIniciado.setVisible(true);
         VentanaRepoIniciado.botonStatusWorkspace.setEnabled(true);
         VentanaRepoIniciado.botonStatusIndex.setEnabled(true);

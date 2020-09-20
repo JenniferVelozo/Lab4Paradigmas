@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vistas;
 
 import Modelos.Repositorio;
@@ -17,6 +13,22 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
     
     //Atributo
     Repositorio myRepo; //un repositorio
+    
+    /**
+     * Permite obtener el atributo Repositorio de la clase VentanaPrincipal.
+     * @return repositorio
+     */
+    public Repositorio getRepositorio(){
+        return this.myRepo;
+    }
+    
+    /**
+     * Permite modificar el atributo Repositorio de la clase VentanaPrincipal.
+     * @param repo repositorio
+     */
+    public void setRepositorio(Repositorio repo){
+        this.myRepo=repo;
+    }
     
     /**
      * Se inicilizan los componentes de la VentanaNuevoArchivo.
@@ -133,9 +145,9 @@ public class VentanaNuevoArchivo extends javax.swing.JFrame {
     private void botonCrearArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearArchivoActionPerformed
         String nombreArch= String.valueOf(nombreArchivo.getText());
         String contenidoArch= String.valueOf(contenidoArchivo.getText());
-        this.myRepo.crearArchivo(nombreArch, contenidoArch);
+        this.getRepositorio().crearArchivo(nombreArch, contenidoArch);
         VentanaPrincipal v1= new VentanaPrincipal();
-        v1.myRepo=this.myRepo;
+        v1.setRepositorio(this.getRepositorio());
         v1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCrearArchivoActionPerformed

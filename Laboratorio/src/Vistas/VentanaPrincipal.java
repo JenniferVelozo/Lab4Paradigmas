@@ -16,6 +16,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Repositorio myRepo=new Repositorio();
     
     /**
+     * Permite obtener el atributo Repositorio de la clase VentanaPrincipal.
+     * @return repositorio
+     */
+    public Repositorio getRepositorio(){
+        return this.myRepo;
+    }
+    
+    /**
+     * Permite modificar el atributo Repositorio de la clase VentanaPrincipal.
+     * @param repo repositorio
+     */
+    public void setRepositorio(Repositorio repo){
+        this.myRepo=repo;
+    }
+    /**
      * Inicializa los componentes de la ventana principal
      */
     public VentanaPrincipal() {
@@ -31,8 +46,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jDialog1 = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        panelMain = new javax.swing.JPanel();
+        panelBotones = new javax.swing.JPanel();
         botonInit = new javax.swing.JButton();
         botonAdd = new javax.swing.JButton();
         botonCommit = new javax.swing.JButton();
@@ -76,11 +91,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(51, 102, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelMain.setBackground(new java.awt.Color(51, 102, 255));
+        panelMain.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelBotones.setBackground(new java.awt.Color(0, 204, 204));
+        panelBotones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         botonInit.setText("Init");
         botonInit.addActionListener(new java.awt.event.ActionListener() {
@@ -296,30 +311,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
+        panelBotones.setLayout(panelBotonesLayout);
+        panelBotonesLayout.setHorizontalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotonesLayout.createSequentialGroup()
+                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBotonesLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonNuevoArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(botonInit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonPull, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(botonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonCommit, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
                             .addComponent(botonPush, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonStatus)
                             .addComponent(botonExit)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(panelBotonesLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(panelWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -330,23 +345,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(panelRR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        panelBotonesLayout.setVerticalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelLocalR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelIndex, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelWorkspace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonInit)
                     .addComponent(botonAdd)
                     .addComponent(botonCommit)
                     .addComponent(botonStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonNuevoArchivo)
                     .addComponent(botonPull)
                     .addComponent(botonPush)
@@ -357,26 +372,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tituloGit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tituloGit.setText("GIT");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
+        panelMain.setLayout(panelMainLayout);
+        panelMainLayout.setHorizontalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(panelMainLayout.createSequentialGroup()
                 .addGap(232, 232, 232)
                 .addComponent(tituloGit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        panelMainLayout.setVerticalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tituloGit)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
 
@@ -384,11 +399,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -402,7 +417,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInitActionPerformed
         VentanaInit ventanaInit= new VentanaInit();
         ventanaInit.setVisible(true);
-        ventanaInit.myRepo= myRepo;
+        ventanaInit.setRepositorio(this.getRepositorio());
         this.dispose();
     }//GEN-LAST:event_botonInitActionPerformed
     /**
@@ -413,7 +428,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonNuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoArchivoActionPerformed
         VentanaNuevoArchivo ventanaNuevoArch= new VentanaNuevoArchivo();
         ventanaNuevoArch.setVisible(true);
-        ventanaNuevoArch.myRepo=this.myRepo;
+        ventanaNuevoArch.setRepositorio(this.getRepositorio());
         this.dispose();
     }//GEN-LAST:event_botonNuevoArchivoActionPerformed
     
@@ -425,7 +440,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCommitActionPerformed
         VentanaCommit ventanaCommit= new VentanaCommit();
         ventanaCommit.setVisible(true);
-        ventanaCommit.myRepo=this.myRepo;
+        ventanaCommit.setRepositorio(this.getRepositorio());
         this.dispose();
     }//GEN-LAST:event_botonCommitActionPerformed
     
@@ -436,7 +451,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void botonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAddActionPerformed
         VentanaAdd ventanaAdd= new VentanaAdd();
         ventanaAdd.setVisible(true);
-        ventanaAdd.myRepo=this.myRepo;
+        ventanaAdd.setRepositorio(this.getRepositorio());
         this.dispose();
     }//GEN-LAST:event_botonAddActionPerformed
     
@@ -445,7 +460,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * @param evt evento
      */
     private void botonPushActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPushActionPerformed
-        this.myRepo.gitPush();
+        this.getRepositorio().gitPush();
     }//GEN-LAST:event_botonPushActionPerformed
     
     /**
@@ -453,7 +468,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * @param evt evento
      */
     private void botonPullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPullActionPerformed
-        this.myRepo.gitPull();
+        this.getRepositorio().gitPull();
     }//GEN-LAST:event_botonPullActionPerformed
     
     /**
@@ -462,7 +477,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     private void botonStatusWorkspaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusWorkspaceActionPerformed
         VentanaStatus v1= new VentanaStatus();
-        v1.areaDeTexto.setText(this.myRepo.workspace.toString());
+        v1.areaDeTexto.setText(this.getRepositorio().getWorkspace().toString());
         v1.titulo.setText("STATUS WORKSPACE");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusWorkspaceActionPerformed
@@ -473,18 +488,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     private void botonStatusIndexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusIndexActionPerformed
         VentanaStatus v1= new VentanaStatus();
-        v1.areaDeTexto.setText(this.myRepo.index.toString());
+        v1.areaDeTexto.setText(this.getRepositorio().getIndex().toString());
         v1.titulo.setText("STATUS INDEX");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusIndexActionPerformed
     
     /**
-     * Permite mostrar una ventana para indicar los commit que posee el Local Repository.
+     * Permite mostrar una ventana para indicar los commits que posee el Local Repository.
      * @param evt evento
      */
     private void botonStatusLRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusLRActionPerformed
         VentanaStatus v1= new VentanaStatus();
-        v1.areaDeTexto.setText(this.myRepo.localR.toString());
+        v1.areaDeTexto.setText(this.getRepositorio().getLocalR().toString());
         v1.titulo.setText("STATUS LOCAL REPOSITORY");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusLRActionPerformed
@@ -495,7 +510,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     private void botonStatusRRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusRRActionPerformed
         VentanaStatus v1= new VentanaStatus();
-        v1.areaDeTexto.setText(this.myRepo.remoteR.toString());
+        v1.areaDeTexto.setText(this.getRepositorio().getRemoteR().toString());
         v1.titulo.setText("STATUS REMOTE REPOSITORY");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusRRActionPerformed
@@ -506,7 +521,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     */
     private void botonStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonStatusActionPerformed
         VentanaStatus v1= new VentanaStatus();
-        v1.areaDeTexto.setText(this.myRepo.gitStatus());
+        v1.areaDeTexto.setText(this.getRepositorio().gitStatus());
         v1.titulo.setText("GIT STATUS");
         v1.setVisible(true);
     }//GEN-LAST:event_botonStatusActionPerformed
@@ -548,16 +563,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JOptionPane jOptionPane1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel labelIndex;
     private javax.swing.JLabel labelLR;
     private javax.swing.JLabel labelLR1;
     private javax.swing.JLabel labelRR;
     private javax.swing.JLabel labelRR1;
     private javax.swing.JLabel labelWorkspace;
+    private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelIndex;
     private javax.swing.JPanel panelLocalR;
+    private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelRR;
     private javax.swing.JPanel panelWorkspace;
     private javax.swing.JLabel tituloGit;

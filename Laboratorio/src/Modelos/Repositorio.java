@@ -21,6 +21,90 @@ public class Repositorio {
     public ListaCommits localR; //zona de trabajo Local Repository
     public ListaCommits remoteR; //zona de trabajo Remote Repository
    
+    /**
+     * Permite obtener el nombre del repositorio.
+     * @return string que representa el nombre del repositorio
+     */
+    public String getNombreRepo(){
+        return this.nombreRepo;
+    }
+    /**
+     * Permite obtener el autor del repositorio.
+     * @return string que representa el autor del repositorio
+     */
+    public String getAutorRepo(){
+        return this.autorRepo;
+    }
+    /**
+     * Permite obtener la zona de trabajo workspace del repositorio.
+     * @return ListaArchivos que representa la zona de trabajo workspace del repositorio
+     */
+    public ListaArchivos getWorkspace(){
+        return this.workspace;
+    }
+    /**
+     * Permite obtener la zona de trabajo index del repositorio.
+     * @return ListaArchivos que representa la zona de trabajo index del repositorio
+     */
+    public ListaArchivos getIndex(){
+        return this.index;
+    }
+    /**
+     * Permite obtener la zona de trabajo local repository del repositorio.
+     * @return ListaCommits que representa la zona de trabajo local repository del repositorio
+     */
+    public ListaCommits getLocalR(){
+        return this.localR;
+    }
+    /**
+     * Permite obtener la zona de trabajo remote repository del repositorio.
+     * @return ListaCommits que representa la zona de trabajo remote repository del repositorio
+     */
+    public ListaCommits getRemoteR(){
+        return this.remoteR;
+    }
+    /**
+     * Permite modificar el nombre del repositorio.
+     * @param nombre nuevo nombre del repositorio
+     */
+    public void setNombreRepo(String nombre){
+        this.nombreRepo=nombre;
+    }
+    /**
+     * Permite modificar el autor del repositorio.
+     * @param autor nuevo autor del repositorio
+     */
+    public void setAutorRepo(String autor){
+        this.autorRepo=autor;
+    }
+    /**
+     * Permite modificar la zona de trabajo workspace del repositorio.
+     * @param workspace nueva zona de trabajo workspace
+     */
+    public void setWorkspace(ListaArchivos workspace){
+        this.workspace=workspace;
+    }
+    /**
+     * Permite modificar la zona de trabajo index del repositorio.
+     * @param index nueva zona de trabajo index
+     */
+    public void setIndex(ListaArchivos index){
+        this.index=index;
+    }
+    /**
+     * Permite modificar la zona de trabajo local repository del repositorio.
+     * @param localR nueva zona de trabajo local repository
+     */
+    public void setLocalR(ListaCommits localR){
+        this.localR=localR;
+    }
+    /**
+     * Permite modificar la zona de trabajo remote repository del repositorio.
+     * @param remoteR nueva zona de trabajo remote repository
+     */
+    public void setRemoteR(ListaCommits remoteR){
+        this.remoteR=remoteR;
+    }
     /** 
       * Inicializa un nuevo repositorio
       * @param nombre nombre del repositorio
@@ -40,12 +124,12 @@ public class Repositorio {
         ListaCommits myRemoteR= new ListaCommits(new ArrayList<>());
         
         //Se asignan los datos correspondientes al repositorio
-        this.nombreRepo=nombre;
-        this.autorRepo=autor;
-        this.workspace=myWS;
-        this.index=myIndex;
-        this.localR=myLocalR;
-        this.remoteR=myRemoteR;
+        this.setNombreRepo(nombre);
+        this.setAutorRepo(autor);
+        this.setWorkspace(myWS);
+        this.setIndex(myIndex);
+        this.setLocalR(myLocalR);
+        this.setRemoteR(myRemoteR);
     }
     
     /** 
@@ -54,9 +138,9 @@ public class Repositorio {
       */
     public void gitAdd(String [] archivosIngresados){
         //Se crea una lista con aquellos archivos que pertenecen al Workspace
-        ListaArchivos archivos=this.workspace.archivosQueEstan(archivosIngresados);
+        ListaArchivos archivos=this.getWorkspace().archivosQueEstan(archivosIngresados);
         for(int i=0;i<archivos.cantidadArchivos;i++){
-            this.index.agregarArchivo(archivos.listaArchivos.get(i));
+            this.getIndex().agregarArchivo(archivos.listaArchivos.get(i));
         }
     }
     
@@ -68,7 +152,7 @@ public class Repositorio {
       */
     public void gitCommit(String mensaje, String autor){
         //Se obtienen los cambios, que corresponden a los archivos del Index
-        ListaArchivos cambios=this.index;
+        ListaArchivos cambios=this.getIndex();
         /**
          * Si la cantidad de archivos en el index es distinto a 0,
          * se crea un commit
@@ -76,11 +160,11 @@ public class Repositorio {
         if (cambios.cantidadArchivos!=0){
             //Se crea un objeto de tipo Commit en base a los datos anteriores
             Commit commit=new Commit(autor,mensaje,cambios);
-            this.localR.agregarCommit(commit);
+            this.getLocalR().agregarCommit(commit);
         }
         //Luego de hacer un commit, el Index queda vacío
         ListaArchivos myIndex= new ListaArchivos(new ArrayList<>());
-        this.index=myIndex;
+        this.setIndex(myIndex);
     }
     
     /**
@@ -88,11 +172,11 @@ public class Repositorio {
      */
     public void gitPush(){
         //Si hay commits en el local repository, se copiane  en el remote repository
-        if(this.localR.cantidadCommits!=0){
-            ListaCommits enviarARemoteR=this.localR;
+        if(this.getLocalR().cantidadCommits!=0){
+            ListaCommits enviarARemoteR=this.getLocalR();
             for(int i=0;i<enviarARemoteR.cantidadCommits;i++){
-                if(this.remoteR.estaCommit(enviarARemoteR.listaCommits.get(i))==0){
-                    this.remoteR.agregarCommit(enviarARemoteR.listaCommits.get(i));
+                if(this.getRemoteR().estaCommit(enviarARemoteR.listaCommits.get(i))==0){
+                    this.getRemoteR().agregarCommit(enviarARemoteR.listaCommits.get(i));
                 }
             }
         }
@@ -103,9 +187,9 @@ public class Repositorio {
     public void gitPull(){
         //Se crea una lista de archivos para enviarlos al Workspace
         ListaArchivos enviarAWS=new ListaArchivos(new ArrayList<>());
-        for(int i=0;i<this.remoteR.cantidadCommits;i++){
+        for(int i=0;i<this.getRemoteR().cantidadCommits;i++){
             //Se obtienen los archivos del commit analizado, que corresponde a los cambios de este
-            ListaArchivos archivosCommit=this.remoteR.listaCommits.get(i).cambios;
+            ListaArchivos archivosCommit=this.getRemoteR().listaCommits.get(i).cambios;
             //Se agregan los archivos a la lista de archivos que será enviada al Workspace
             for(int j=0;j<archivosCommit.cantidadArchivos;j++){
                 enviarAWS.agregarArchivo(archivosCommit.listaArchivos.get(j));
@@ -113,14 +197,14 @@ public class Repositorio {
         }
         //Se agregan los archivos en el Workspace
         for (int i=0;i<enviarAWS.cantidadArchivos;i++){
-            int posicion=this.workspace.estaArchivo(enviarAWS.listaArchivos.get(i).nombreArchivo);
+            int posicion=this.getWorkspace().estaArchivo(enviarAWS.listaArchivos.get(i).nombreArchivo);
             //Si el archivo analizado el Remote Repostiroy no está en el Workspace, entonces se agrega
             if (posicion==-1){
-                this.workspace.agregarArchivo(enviarAWS.listaArchivos.get(i));
+                this.getWorkspace().agregarArchivo(enviarAWS.listaArchivos.get(i));
             }
             else{
                 //Se sobreescribe el contenido del archivo en caso de haber cambios en él.
-                this.workspace.listaArchivos.get(posicion).contenido=enviarAWS.listaArchivos.get(i).contenido;
+                this.getWorkspace().listaArchivos.get(posicion).contenido=enviarAWS.listaArchivos.get(i).contenido;
             }
         }
     }
@@ -131,11 +215,11 @@ public class Repositorio {
      */
     public String gitStatus(){
         String statusString=
-                "\nNombre del repositorio: "+ this.nombreRepo+
-                "\nAutor del repositorio: "+ this.autorRepo+
-                "\nNumero de archivos en el Workspace: "+ this.workspace.cantidadArchivos+
-                "\nNumero de commits en Local Repository: "+this.localR.cantidadCommits;
-        if(!this.localR.listaCommits.equals(this.remoteR.listaCommits)){
+                "\nNombre del repositorio: "+ this.getNombreRepo()+
+                "\nAutor del repositorio: "+ this.getAutorRepo()+
+                "\nNumero de archivos en el Workspace: "+ this.getWorkspace().cantidadArchivos+
+                "\nNumero de commits en Local Repository: "+this.getLocalR().cantidadCommits;
+        if(!this.localR.listaCommits.equals(this.getRemoteR().listaCommits)){
             statusString+="\nEl Remote Repository no está al día";
         }
         else{
@@ -153,8 +237,8 @@ public class Repositorio {
         //Se crea un nuevo objeto de tipo Archivo
         Archivo archivo=new Archivo(nombreArchivo,contenidoArchivo);
         //Se agrega el nuevo archivo a la zona de trabajo Workspace
-        if(workspace.estaArchivo(archivo.nombreArchivo)==-1){
-            this.workspace.agregarArchivo(archivo);
+        if(this.getWorkspace().estaArchivo(archivo.nombreArchivo)==-1){
+            this.getWorkspace().agregarArchivo(archivo);
         }
         
     }

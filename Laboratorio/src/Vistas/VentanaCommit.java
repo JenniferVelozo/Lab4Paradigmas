@@ -13,6 +13,22 @@ public class VentanaCommit extends javax.swing.JFrame {
     
     //Atributo
     Repositorio myRepo; //un repositorio
+    
+    /**
+     * Permite obtener el atributo Repositorio de la clase VentanaPrincipal.
+     * @return repositorio
+     */
+    public Repositorio getRepositorio(){
+        return this.myRepo;
+    }
+    
+    /**
+     * Permite modificar el atributo Repositorio de la clase VentanaPrincipal.
+     * @param repo repositorio
+     */
+    public void setRepositorio(Repositorio repo){
+        this.myRepo=repo;
+    }
     /**
      * Se inicilizan los componentes de la VentanaCommit.
      */
@@ -122,9 +138,9 @@ public class VentanaCommit extends javax.swing.JFrame {
     private void botonGenerarCommitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarCommitActionPerformed
         String mensaje= String.valueOf(mensajeCommit.getText());
         String autor= String.valueOf(autorCommit.getText());
-        this.myRepo.gitCommit(mensaje,autor);
+        this.getRepositorio().gitCommit(mensaje,autor);
         VentanaPrincipal v1= new VentanaPrincipal();
-        v1.myRepo=this.myRepo;
+        v1.setRepositorio(this.getRepositorio());
         v1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonGenerarCommitActionPerformed
