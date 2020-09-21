@@ -219,7 +219,7 @@ public class Repositorio {
                 "\nAutor del repositorio: "+ this.getAutorRepo()+
                 "\nNumero de archivos en el Workspace: "+ this.getWorkspace().cantidadArchivos+
                 "\nNumero de commits en Local Repository: "+this.getLocalR().cantidadCommits;
-        if(!this.localR.listaCommits.equals(this.getRemoteR().listaCommits)){
+        if(!this.getLocalR().listaCommits.equals(this.getRemoteR().listaCommits)){
             statusString+="\nEl Remote Repository no está al día";
         }
         else{
